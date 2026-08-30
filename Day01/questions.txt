@@ -1,0 +1,128 @@
+1. What is backend development?
+
+Answer:
+Backend development is the part of web development that handles the server-side logic, databases, authentication, APIs, and business logic of an application. It receives requests from the frontend, processes them, communicates with the database when needed, and sends a response back.
+
+2. What is Node.js?
+
+Answer:
+Node.js is a JavaScript runtime environment that allows us to run JavaScript outside the browser. It is commonly used to build backend servers and APIs.
+
+3. Why do we use Node.js instead of browser JavaScript?
+
+Answer:
+Browser JavaScript is mainly designed to interact with web pages and the browser. Node.js allows JavaScript to run on a server and provides features for things like HTTP servers, file handling, environment variables, and backend applications.
+
+4. What is HTTP?
+
+Answer:
+HTTP stands for HyperText Transfer Protocol. It is a communication protocol that allows a client and server to communicate over a network.
+
+For example:
+
+React frontend
+      ↓
+HTTP Request
+      ↓
+Node.js backend
+      ↓
+HTTP Response
+      ↓
+React frontend
+5. What is the difference between a request and a response?
+
+Answer:
+
+A request is the message sent by the client to the server asking it to perform something or provide data.
+
+A response is the message sent by the server back to the client after processing the request.
+
+Example:
+
+Client → GET /users → Server
+Client ← User data ← Server
+6. What is localhost?
+
+Answer:
+localhost refers to our own computer.
+
+When we run a backend locally, for example:
+
+http://localhost:5000
+
+it means we are accessing the server running on our own computer on port 5000.
+
+7. What is a port?
+
+Answer:
+A port is a number used to identify a specific network service running on a computer.
+
+For example:
+
+React     → localhost:5173
+Backend   → localhost:5000
+
+Here, 5173 and 5000 are different ports used by different applications.
+
+8. What is JSON?
+
+Answer:
+JSON stands for JavaScript Object Notation. It is a lightweight data format commonly used for exchanging data between frontend and backend.
+
+Example:
+
+{
+  "name": "Bidya",
+  "age": 22,
+  "role": "Developer"
+}
+
+APIs commonly send and receive data in JSON format.
+
+9. What does npm init -y do?
+
+Answer:
+npm init -y creates a package.json file for a Node.js project using the default settings.
+
+The package.json file contains information about the project, such as:
+
+Project name
+Version
+Scripts
+Dependencies
+10. What is package.json?
+
+Answer:
+package.json is an important configuration file in a Node.js project. It contains information about the project and keeps track of dependencies, scripts, project metadata, and configuration.
+
+For example:
+
+{
+  "name": "my-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js"
+  }
+}
+⭐ Bonus: Interview question you should definitely know
+What happens when a user enters http://localhost:5000 in the browser?
+
+Answer:
+
+The browser acts as the client and sends an HTTP request to port 5000 on the local machine. If a Node.js server is listening on that port, it receives the request, processes it, and sends an HTTP response back to the browser.
+
+The flow is:
+
+Browser
+   ↓
+HTTP Request
+   ↓
+localhost:5000
+   ↓
+Node.js Server
+   ↓
+Process Request
+   ↓
+HTTP Response
+   ↓
+Browser
