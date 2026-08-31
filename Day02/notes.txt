@@ -1,0 +1,23 @@
+                 NODE.JS
+                    │
+                    ↓
+            JavaScript execution
+                    │
+          ┌─────────┴─────────┐
+          ↓                   ↓
+      Synchronous          Asynchronous
+          │                   │
+          ↓                   ↓
+       WAIT 🛑            DON'T BLOCK
+          │                   │
+          ↓                   ↓
+      Finish task         Start operation
+          │                   │
+          ↓                   ↓
+      Next task            Do other work
+                              │
+                              ↓
+                       Operation finishes
+                              │
+                              ↓
+                     Callback / Promise

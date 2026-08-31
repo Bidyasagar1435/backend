@@ -8,6 +8,7 @@ function getUser(callback) {
     }
     const users = JSON.parse(data);
     callback(null, users);
+
   });
 }
 

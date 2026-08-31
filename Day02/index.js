@@ -62,11 +62,60 @@ const fs = require("fs");
 
 // console.log("Finished");
 
-const getUser = require("./user");
+// const getUser = require("./user");
 
-getUser((err, users) => {
+// getUser((err, users) => {
+//   if (err) {
+//     console.log(err);
+//   }
+
+//   users.map((user)=>{
+//     console.log(user.name);
+//   })
+// });
+
+const {getStudents, addStudent} = require("./students");
+
+// getStudents((err, students) => {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//   console.log("All students: ");
+//   students.map((student) => {
+//     console.log(student.name);
+//   });
+//   console.log("Total student: ", students.length);
+//   console.log("Only MERN students: ");
+//   const mernStudents = students.filter((student) => {
+//     return student.course === "MERN";
+//   });
+//   console.log(mernStudents);
+
+//   let stdId = 3;
+//   const student = students.find((s) => s.id === stdId);
+
+//   if (stdId) {
+//     console.log("Student found: ", student.name);
+//   }
+// });
+
+const newStudent = {
+  id: 6,
+  name: "Sagar",
+  age: 23,
+  course: "Node.js",
+};
+
+addStudent(newStudent, (err, student) => {
   if (err) {
     console.log(err);
+    return;
   }
-  console.log(users);
+
+  console.log("Student added successfully:");
+  console.log(student);
 });
+
+
+

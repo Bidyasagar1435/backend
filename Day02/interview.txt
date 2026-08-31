@@ -1,0 +1,420 @@
+1. What is Node.js?
+
+Answer:
+
+Node.js is a JavaScript runtime environment that allows us to run JavaScript outside the browser. It is built on Chrome's V8 JavaScript engine and is commonly used to build backend servers, APIs, and real-time applications.
+
+Short interview version:
+
+"Node.js is a JavaScript runtime built on the V8 engine that allows us to execute JavaScript on the server side."
+
+2. What is the fs module in Node.js?
+
+Answer:
+
+fs stands for File System. It is a built-in Node.js module used to interact with files and directories.
+
+For example, we can:
+
+Read files
+Create files
+Write files
+Append data
+Delete files
+Rename files
+
+Example:
+
+const fs = require("fs");
+
+fs.readFile("message.txt", "utf8", (err, data) => {
+  console.log(data);
+});
+3. What is the difference between readFile() and readFileSync()?
+
+Answer:
+
+readFile() is asynchronous, while readFileSync() is synchronous.
+
+With readFile(), Node.js starts reading the file and can continue executing other code while waiting.
+
+With readFileSync(), Node.js blocks the current execution until the file has been completely read.
+
+// Asynchronous
+fs.readFile("message.txt", "utf8", (err, data) => {
+  console.log(data);
+});
+
+// Synchronous
+const data = fs.readFileSync("message.txt", "utf8");
+console.log(data);
+
+Remember:
+
+readFile() → don't wait
+readFileSync() → wait
+
+4. What is synchronous programming?
+
+Answer:
+
+Synchronous execution means operations are performed one after another. The next operation waits until the current operation is completed.
+
+Example:
+
+console.log("A");
+
+console.log("B");
+
+console.log("C");
+
+Output:
+
+A
+B
+C
+
+The execution happens sequentially.
+
+5. What is asynchronous programming?
+
+Answer:
+
+Asynchronous programming allows a program to start a time-consuming operation without blocking the execution of other code.
+
+For example:
+
+console.log("A");
+
+setTimeout(() => {
+  console.log("B");
+}, 2000);
+
+console.log("C");
+
+Output:
+
+A
+C
+B
+
+The timer runs asynchronously, so JavaScript doesn't wait for the two seconds before executing "C".
+
+6. Why is asynchronous programming important in Node.js?
+
+Answer:
+
+Node.js is designed around non-blocking I/O. Asynchronous operations allow Node.js to handle other work while waiting for operations such as file access, database queries, or network requests.
+
+This makes Node.js particularly useful for applications that handle many concurrent I/O operations.
+
+Interview version:
+
+"Asynchronous programming prevents I/O operations from blocking the execution, allowing Node.js to handle other requests while waiting for operations like database or file access to complete."
+
+7. What is a callback function?
+
+Answer:
+
+A callback is a function that is passed to another function and executed later, usually after an asynchronous operation finishes.
+
+Example:
+
+fs.readFile("message.txt", "utf8", (err, data) => {
+  console.log(data);
+});
+
+Here:
+
+(err, data) => {
+  console.log(data);
+}
+
+is the callback.
+
+You are basically telling Node:
+
+"Read the file, and when you're finished, call this function."
+
+8. What is JSON.parse()?
+
+Answer:
+
+JSON.parse() converts a JSON string into a JavaScript object or array.
+
+Example:
+
+const data = '{"name":"Rahul","age":21}';
+
+const user = JSON.parse(data);
+
+console.log(user.name);
+
+Output:
+
+Rahul
+
+Think:
+
+JSON String
+    ↓
+JSON.parse()
+    ↓
+JavaScript Object
+9. What is JSON.stringify()?
+
+Answer:
+
+JSON.stringify() converts a JavaScript object or array into a JSON string.
+
+Example:
+
+const user = {
+  name: "Rahul",
+  age: 21
+};
+
+const data = JSON.stringify(user);
+
+console.log(data);
+
+Output:
+
+{"name":"Rahul","age":21}
+
+Think:
+
+JavaScript Object
+       ↓
+JSON.stringify()
+       ↓
+JSON String
+Easy way to remember:
+parse      → JSON → JavaScript
+stringify  → JavaScript → JSON
+10. What is the difference between writeFile() and appendFile()?
+
+Answer:
+
+writeFile() writes data to a file and can overwrite existing content.
+
+appendFile() adds data to the end of existing content without removing it.
+
+Example:
+
+fs.writeFile("skills.txt", "JavaScript");
+
+Then:
+
+fs.appendFile("skills.txt", "\nNode.js");
+
+The file becomes:
+
+JavaScript
+Node.js
+
+Interview answer:
+
+"writeFile() creates or overwrites a file, whereas appendFile() adds data to the existing file."
+
+11. What is module.exports?
+
+Answer:
+
+module.exports is used to export functionality from one Node.js module so that another file can use it.
+
+Example:
+
+math.js
+function add(a, b) {
+  return a + b;
+}
+
+module.exports = add;
+index.js
+const add = require("./math");
+
+console.log(add(10, 20));
+
+Output:
+
+30
+
+So:
+
+math.js
+   ↓
+module.exports
+   ↓
+index.js
+   ↓
+require()
+12. What is require()?
+
+Answer:
+
+require() is used in the CommonJS module system to import modules or functionality into a Node.js file.
+
+Example:
+
+const fs = require("fs");
+
+Here we're importing Node's built-in File System module.
+
+Or:
+
+const add = require("./math");
+
+Here we're importing our own math.js module.
+
+13. Why do we use modules in Node.js?
+
+Answer:
+
+Modules allow us to divide our application into smaller, reusable files.
+
+Instead of putting everything into one huge file:
+
+index.js
+
+we can organize it:
+
+controllers/
+routes/
+models/
+utils/
+middlewares/
+
+This makes the application:
+
+Easier to understand
+Easier to maintain
+Reusable
+Easier to debug
+
+This becomes very important when we start Express.
+
+14. What does filter() return?
+
+Answer:
+
+filter() returns a new array containing all elements that satisfy the given condition.
+
+Example:
+
+const students = [
+  { name: "Rahul", course: "MERN" },
+  { name: "Amit", course: "Python" },
+  { name: "Neha", course: "MERN" }
+];
+
+const mernStudents = students.filter(
+  student => student.course === "MERN"
+);
+
+Result:
+
+[
+  { name: "Rahul", course: "MERN" },
+  { name: "Neha", course: "MERN" }
+]
+
+Important:
+
+filter() always returns an array, even if only one item matches.
+
+15. Why did filter() return an empty array []?
+
+Answer:
+
+An empty array means no elements satisfied the condition.
+
+For example:
+
+students.filter(student => student.course === "MERN");
+
+If none of the students have "MERN" as their course, the result is:
+
+[]
+
+Common reasons include:
+
+Wrong condition
+Case mismatch
+Missing return
+Wrong property name
+
+For example:
+
+student.course !== "MERN"
+
+means not MERN, not MERN.
+
+🔥 Some slightly harder interview questions
+
+These are worth knowing because interviewers may ask follow-ups.
+
+16. Is Node.js synchronous or asynchronous?
+
+Good answer:
+
+"Node.js supports both synchronous and asynchronous operations, but it is designed around non-blocking, asynchronous I/O. This allows it to handle I/O operations efficiently without blocking the main JavaScript execution."
+
+Don't say:
+
+❌ "Node.js is completely asynchronous."
+
+That's an oversimplification.
+
+17. Is JavaScript synchronous or asynchronous?
+
+Answer:
+
+JavaScript executes code synchronously by default, but it provides mechanisms for handling asynchronous operations through things such as callbacks, Promises, and async/await.
+
+For example:
+
+console.log("A");
+
+setTimeout(() => {
+  console.log("B");
+}, 1000);
+
+console.log("C");
+
+Output:
+
+A
+C
+B
+18. What is non-blocking I/O?
+
+Answer:
+
+Non-blocking I/O means Node.js can start an I/O operation, such as reading a file or querying a database, without waiting for that operation to finish before continuing other work.
+
+Once the operation completes, its callback or Promise can handle the result.
+
+This is one of the key concepts behind Node.js backend development.
+
+19. What is a Buffer in Node.js?
+
+Answer:
+
+A Buffer is a Node.js object used to work with raw binary data.
+
+For example, if you read a file without specifying an encoding:
+
+fs.readFile("message.txt", (err, data) => {
+  console.log(data);
+});
+
+data will normally be a Buffer.
+
+If you use:
+
+fs.readFile("message.txt", "utf8", (err, data) => {
+  console.log(data);
+});
+
+Node.js decodes the bytes into a string.

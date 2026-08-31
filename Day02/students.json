@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Rahul",
+    "age": 21,
+    "course": "MERN"
+  },
+  {
+    "id": 2,
+    "name": "Amit",
+    "age": 22,
+    "course": "Python"
+  },
+  {
+    "id": 3,
+    "name": "Neha",
+    "age": 23,
+    "course": "MERN"
+  },
+  {
+    "id": 4,
+    "name": "Sita",
+    "age": 20,
+    "course": "JS"
+  },
+  {
+    "id": 5,
+    "name": "Vikram",
+    "age": 24,
+    "course": "Java"
+  },
+  {
+    "id": 6,
+    "name": "Sagar",
+    "age": 23,
+    "course": "Node.js"
+  }
+]
