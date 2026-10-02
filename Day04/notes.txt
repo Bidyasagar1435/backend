@@ -1,0 +1,7 @@
+GET => server se data fetch karne ke liye.
+POST => server ko data provide karne ke liye .
+DELETE => server se data delete karne ke liye .
+PUT => server se data update karne ke liye .
+
+
+
