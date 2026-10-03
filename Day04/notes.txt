@@ -4,4 +4,10 @@ DELETE => server se data delete karne ke liye .
 PUT => server se data update karne ke liye .
 
 
+CRUD
+C  => create => post
+R  => Read => get
+U  => Update => put / patch
+D  => Delete => delete
+
 
