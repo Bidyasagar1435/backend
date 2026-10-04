@@ -1,7 +1,7 @@
 GET => server se data fetch karne ke liye.
 POST => server ko data provide karne ke liye .
 DELETE => server se data delete karne ke liye .
-PUT => server se data update karne ke liye .
+PATCH => server se data update karne ke liye .
 
 
 CRUD
@@ -11,3 +11,9 @@ U  => Update => put / patch
 D  => Delete => delete
 
 
+c75eIYVS7jfMAJNX
+
+
+1. findOneAndUpdate() // this method required two objects one for condition and another for updating data
+2. deleteOne() // this method required one object for finding the data to be deleted 
+3. 
