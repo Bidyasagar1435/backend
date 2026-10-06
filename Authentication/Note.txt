@@ -1,0 +1,17 @@
+* 2 types of Authentication:
+    1. secure authentication
+        * Token based authentication
+        * OAuth
+    2. Insecure authentication
+        * Basic Authentication
+        * Session cookies
+        * Form based Authentication
+        
+
+Validation => Is the data in correct format or not?
+
+Verification => Is the data correct or not?
+
+Authentication => Identify the user who sends request.
+
+Authorization => What are you allowed to do?

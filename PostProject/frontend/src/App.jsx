@@ -1,10 +1,20 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Home from "./Pages/Home";
+import Posts from "./Pages/Posts";
+import Feed from "./Pages/Feed";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-    <>
-      <h2 className="text-3xl font-bold underline">Hello World!</h2>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/feed" element={<Feed />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
