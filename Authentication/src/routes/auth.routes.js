@@ -1,11 +1,18 @@
 const express = require("express");
-const authController = require("../controllers/auth.controller")
+const authController = require("../controllers/auth.controller");
 
 const router = express.Router();
 
+router.post("/register", authController.registerUser);
 
+router.get("/test", (req, res) => {
+  console.log("Cookies : ", req.cookies);
+  
 
-router.post("/register",authController.registerUser)
+  res.json({
+    message: "Test route",
+    data: req.cookies,
+  });
+});
 
-
-module.exports = router
+module.exports = router;
