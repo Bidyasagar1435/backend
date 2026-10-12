@@ -42,7 +42,7 @@ async function createMusic(req, res) {
       },
     });
   } catch (error) {
-    console.log("Error: >>>>>>", error);
+    console.log("Error: ", error);
 
     return res.status(401).json({
       message: "Invalid token",
@@ -55,7 +55,7 @@ async function createAlbum(req, res) {
 
   if (!token) {
     return res.status(401).json({
-      message: "Unauthorized >>>>",
+      message: "Unauthorized",
     });
   }
 
@@ -89,7 +89,7 @@ async function createAlbum(req, res) {
     console.log("Error: ", error);
 
     return res.status(401).json({
-      message: "Unauthorized<<<<<",
+      message: "Unauthorized",
     });
   }
 }
