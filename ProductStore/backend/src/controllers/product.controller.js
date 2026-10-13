@@ -1,7 +1,7 @@
 const productModel = require("../models/product.model");
 const { uploadFile } = require("../services/storage.service");
 
-async function addProduct(req, res) {
+async function createProduct(req, res) {
   try {
     const { name, desc } = req.body;
 
@@ -27,11 +27,18 @@ async function addProduct(req, res) {
       name,
       desc,
       image: imageUrl,
+      admin: req.user.id,
     });
 
     return res.status(201).json({
       message: "Product added successfully",
-      product,
+      product: {
+        id: product._id,
+        name: product.name,
+        desc: product.desc,
+        image: product.image,
+        admin: product.admin,
+      },
     });
   } catch (error) {
     console.error("Add product error:", error);
@@ -66,7 +73,13 @@ async function updateProduct(req, res) {
 
     return res.status(200).json({
       message: "Product updated successfully",
-      product,
+      product: {
+        id: product._id,
+        name: product.name,
+        desc: product.desc,
+        image: product.image,
+        admin: product.admin,
+      },
     });
   } catch (error) {
     console.error("Update product error:", error);
@@ -89,7 +102,13 @@ async function deleteProduct(req, res) {
     }
     return res.status(200).json({
       message: "Product deleted successfully",
-      product,
+      product: {
+        id: product._id,
+        name: product.name,
+        desc: product.desc,
+        image: product.image,
+        admin: product.admin,
+      },
     });
   } catch (error) {
     console.error("Delete product error:", error);
@@ -139,9 +158,11 @@ async function getSingleProduct(req, res) {
 }
 
 module.exports = {
-  addProduct,
+  createProduct,
   updateProduct,
   deleteProduct,
   getAllProducts,
   getSingleProduct,
 };
+
+

@@ -5,6 +5,9 @@ const {
   authMiddleware,
   adminMiddleware,
 } = require("../middlewares/auth.middleware");
+const {
+  validateProductId,
+} = require("../middlewares/validateProductId.middleware");
 
 const router = express.Router();
 
@@ -16,23 +19,29 @@ router.post(
   upload.single("image"),
   authMiddleware,
   adminMiddleware,
-  productController.addProduct,
+  productController.createProduct,
 );
 router.patch(
   "/update-product/:id",
   authMiddleware,
   adminMiddleware,
+  validateProductId,
   productController.updateProduct,
 );
 router.delete(
   "/delete-product/:id",
   authMiddleware,
   adminMiddleware,
+  validateProductId,
   productController.deleteProduct,
 );
 
 // public routes
 router.get("/all-products", productController.getAllProducts);
-router.get("/single-product/:id", productController.getSingleProduct);
+router.get(
+  "/single-product/:id",
+  validateProductId,
+  productController.getSingleProduct,
+);
 
 module.exports = router;
