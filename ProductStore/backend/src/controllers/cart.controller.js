@@ -93,4 +93,34 @@ async function removeFromCart(req, res) {
   }
 }
 
-module.exports = { addToCart, removeFromCart };
+async function getCart(req, res) {
+  try {
+    const userId = req.user.id;
+
+    const cart = await cartModel
+      .findOne({ user: userId })
+      .populate("items.product", " name desc image");
+
+    if (!cart) {
+      return res.status(200).json({
+        message: "Your Cart Is Empty",
+        cart: {
+          items: [],
+        },
+      });
+    }
+
+    return res.status(200).json({
+      message: "Cart fetched successfully",
+      cart,
+    });
+  } catch (error) {
+    console.error("Get cart error:", error);
+
+    return res.status(500).json({
+      message: "Failed to fetch cart",
+    });
+  }
+}
+
+module.exports = { addToCart, removeFromCart, getCart };

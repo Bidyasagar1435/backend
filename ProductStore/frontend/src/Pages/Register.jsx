@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../services/api";
 
 const Register = () => {
   const [error, setError] = useState("");
@@ -30,12 +31,10 @@ const Register = () => {
       setTimeout(() => {
         navigate("/login");
       }, 1500);
-    } catch (error) {
-      console.log("Error:", err);
-      console.log("Response data:", err.response?.data);
-      console.log("Status:", err.response?.status);
+    } catch (err) {
+     
       setError(
-        error.response?.data?.message || "Registration failed. Try again.",
+        err.response?.data?.message || "Registration failed. Try again.",
       );
     } finally {
       setLoading(false);
